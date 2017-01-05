@@ -1,0 +1,14 @@
+{{#section 'head'}}
+     <title>Users view for  {{text}}</title>
+     <meta charset="utf-8">
+{{/section}}
+
+<h1>Welcome!</h1>
+<p>You are at {{text}}!</p>
+
+<form method="POST" action="/users/login/process">
+ <p>Login: <input name="login"></p>
+ <p>Password: <input name="password"></p>
+ <p><input type="submit" value="GO"></p>
+
+</form>

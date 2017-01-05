@@ -1,0 +1,32 @@
+{
+  "name": "routingSessions",
+  "version": "3.0.0",
+  "description": "a tiny framework for an express app - jshint-ok",
+  "main": "index.js",
+  "engines": {
+    "node": "7.3.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gossoudarev/webteach/tree/master/exam2"
+  },
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "author": "EliasGoss",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "1.15.2",
+    "express": "4.13.4",
+    "express-handlebars": "^3.0.0",
+    "express-session": "1.14.2",
+    "jsonfile": "2.4.0",
+    "lodash": "4.16.6",
+    "request": "^2.76.0"
+  }
+}
