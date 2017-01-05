@@ -40,7 +40,7 @@ app
 router
       .route('/')
             .get( (req, res) => {
-	            res.render('userslist', {"text": "List of all users", "users": userData.users});
+	            res.render('userslist', {"text": "the List of all users", "users": userData.users});
             })
             .post( (req, res) => {
 				userData.users.push ( {"login":req.body.login, "password":req.body.password  }  );
