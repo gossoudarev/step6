@@ -1,8 +1,8 @@
 /*jshint esversion: 6 */
 /*jshint -W058 */
 
-const PORT = 7777;
-var	  express = require('express'),
+const PORT = 7777
+	, express = require('express'),
           app = express(),
 
 		  routers = {
@@ -26,6 +26,24 @@ var	  express = require('express'),
 module.exports = (()=>{
    function inner(){
       this.start = whatToDo=>{
+
+        /* хотя
+            мы не определяли В ЭТОМ файле, что такое api
+            мы сделали require файла ./bd   т.е. ./bd/index.js
+                                            а там всё это объявлено как глобальное
+            в файле index.js   с которого всё начинается
+               и в том же файле index.js мы делаем require вот этого файла server.js
+               и он автоматически получает доступ к api
+               более того! тут мы ниже сделаем реквайринг машрутизаторов - они тоже получат доступ к api
+
+         */
+        (async ()=>{
+            const users = await api.User.find().exec();
+            console.log (users);
+
+        })();
+
+
 		  app
 		     .engine('handlebars', handlebars.engine)
 		     .set('view engine', 'handlebars')    

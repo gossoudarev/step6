@@ -166,6 +166,17 @@ router
   				
  				 });
 
+router
+	.route('/mongo/:login')
+		.get( (req, res)=>{
+			let login = req.params.login; // e.g. student
+
+    		(async ()=>{
+        		 const user = await api.User.findOne({user: login}).exec();
+   				 res.send (user);
+			})();
+		})
+
    return router;
 };
 

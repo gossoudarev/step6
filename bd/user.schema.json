@@ -1,0 +1,4 @@
+{
+  "user": { "type": "String" },
+  "password": { "type": "String" }
+}
