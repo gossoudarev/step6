@@ -167,15 +167,38 @@ router
  				 });
 
 router
-	.route('/mongo/:login')
-		.get( (req, res)=>{
-			let login = req.params.login; // e.g. student
+	.route('/mongo/add/:user/:password')   /* curl -X POST localhost:7777/users/mongo/add/Ilya4/pass4 */
+        .post(async  (req, res)=>{
+    		const [user, password] = Object.values(req.params)
+	            , foundUser = await api.User.findOne({user}).exec();
+    		if (!foundUser) {
+                try {
+                    let newUser = new api.User({user, password}) /* должны совпадать со схемой! */
+                      , result = await newUser.save();
+                    res.send(result);
+                }
+                catch (e) {
+                    console.log(e);
+                    res.send(`Error!`);
+                }
+			} else {
+                res.send(`We have such a user ${user}!`);
+			}
+})
+		.get( (req, res) => res.render(`root`, {"text":`Try POST to Add user ${req.params.user}`})
+);
 
-    		(async ()=>{
-        		 const user = await api.User.findOne({user: login}).exec();
-   				 res.send (user);
-			})();
-		})
+
+router
+	.route('/mongo/:user')
+        .get( async (req, res)=>{
+             const user = req.params.user  /* e.g. student  */
+                 , foundUser = await api.User.findOne({user}).exec()
+	             , result = foundUser ?  foundUser.password : 'No result';
+             res.send(result);
+});
+
+
 
    return router;
 };
